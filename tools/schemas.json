@@ -1,0 +1,4720 @@
+{
+  "freecad_new_document": {
+    "description": "Create a new FreeCAD document",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name for the new document"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    }
+  },
+  "freecad_open_document": {
+    "description": "Open an existing FreeCAD .FCStd file",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "filePath": {
+          "type": "string",
+          "description": "Path to the .FCStd file to open"
+        }
+      },
+      "required": [
+        "filePath"
+      ]
+    }
+  },
+  "freecad_save_document": {
+    "description": "Save the active document. Optionally save to a new file path.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "filePath": {
+          "type": "string",
+          "description": "Optional file path for save-as"
+        }
+      },
+      "required": []
+    }
+  },
+  "freecad_close_document": {
+    "description": "Close a FreeCAD document by name",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the document to close"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    }
+  },
+  "freecad_list_objects": {
+    "description": "List all objects in a FreeCAD document",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "documentName": {
+          "type": "string",
+          "description": "Document name (uses active document if omitted)"
+        }
+      },
+      "required": []
+    }
+  },
+  "freecad_get_object_info": {
+    "description": "Get detailed information about a specific object including shape volume, area, and bounding box",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object to inspect"
+        },
+        "documentName": {
+          "type": "string",
+          "description": "Document name (uses active document if omitted)"
+        }
+      },
+      "required": [
+        "objectName"
+      ]
+    }
+  },
+  "freecad_create_box": {
+    "description": "Create a Part::Box primitive in the active document.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "length": {
+          "type": "number",
+          "description": "Box length (X dimension)"
+        },
+        "width": {
+          "type": "number",
+          "description": "Box width (Y dimension)"
+        },
+        "height": {
+          "type": "number",
+          "description": "Box height (Z dimension)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Optional object name"
+        }
+      },
+      "required": [
+        "length",
+        "width",
+        "height"
+      ]
+    }
+  },
+  "freecad_create_cylinder": {
+    "description": "Create a Part::Cylinder primitive in the active document.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "radius": {
+          "type": "number",
+          "description": "Cylinder radius"
+        },
+        "height": {
+          "type": "number",
+          "description": "Cylinder height"
+        },
+        "name": {
+          "type": "string",
+          "description": "Optional object name"
+        }
+      },
+      "required": [
+        "radius",
+        "height"
+      ]
+    }
+  },
+  "freecad_create_sphere": {
+    "description": "Create a Part::Sphere primitive in the active document.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "radius": {
+          "type": "number",
+          "description": "Sphere radius"
+        },
+        "name": {
+          "type": "string",
+          "description": "Optional object name"
+        }
+      },
+      "required": [
+        "radius"
+      ]
+    }
+  },
+  "freecad_create_cone": {
+    "description": "Create a Part::Cone primitive in the active document.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "radius1": {
+          "type": "number",
+          "description": "Bottom radius"
+        },
+        "radius2": {
+          "type": "number",
+          "description": "Top radius"
+        },
+        "height": {
+          "type": "number",
+          "description": "Cone height"
+        },
+        "name": {
+          "type": "string",
+          "description": "Optional object name"
+        }
+      },
+      "required": [
+        "radius1",
+        "radius2",
+        "height"
+      ]
+    }
+  },
+  "freecad_create_torus": {
+    "description": "Create a Part::Torus primitive in the active document.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "radius1": {
+          "type": "number",
+          "description": "Major radius (center to tube center)"
+        },
+        "radius2": {
+          "type": "number",
+          "description": "Minor radius (tube radius)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Optional object name"
+        }
+      },
+      "required": [
+        "radius1",
+        "radius2"
+      ]
+    }
+  },
+  "freecad_create_wedge": {
+    "description": "Create a Part wedge (tapered box) in the active document.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "xmin": {
+          "type": "number",
+          "description": "X minimum"
+        },
+        "ymin": {
+          "type": "number",
+          "description": "Y minimum"
+        },
+        "zmin": {
+          "type": "number",
+          "description": "Z minimum"
+        },
+        "x2min": {
+          "type": "number",
+          "description": "X2 minimum (top face)"
+        },
+        "z2min": {
+          "type": "number",
+          "description": "Z2 minimum (top face)"
+        },
+        "xmax": {
+          "type": "number",
+          "description": "X maximum"
+        },
+        "ymax": {
+          "type": "number",
+          "description": "Y maximum"
+        },
+        "zmax": {
+          "type": "number",
+          "description": "Z maximum"
+        },
+        "x2max": {
+          "type": "number",
+          "description": "X2 maximum (top face)"
+        },
+        "z2max": {
+          "type": "number",
+          "description": "Z2 maximum (top face)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Optional object name"
+        }
+      },
+      "required": [
+        "xmin",
+        "ymin",
+        "zmin",
+        "x2min",
+        "z2min",
+        "xmax",
+        "ymax",
+        "zmax",
+        "x2max",
+        "z2max"
+      ]
+    }
+  },
+  "freecad_create_helix": {
+    "description": "Create a helix curve (for springs, threads, coils)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "pitch": {
+          "type": "number",
+          "description": "Distance between turns in mm"
+        },
+        "height": {
+          "type": "number",
+          "description": "Total helix height in mm"
+        },
+        "radius": {
+          "type": "number",
+          "description": "Helix radius in mm"
+        },
+        "angle": {
+          "type": "number",
+          "description": "Taper angle in degrees (0 = uniform, default 0)"
+        },
+        "leftHanded": {
+          "type": "boolean",
+          "description": "Left-handed helix (default false)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Optional object name"
+        }
+      },
+      "required": [
+        "pitch",
+        "height",
+        "radius"
+      ]
+    }
+  },
+  "freecad_create_spiral": {
+    "description": "Create a flat spiral curve (for scroll pumps, watch springs)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "growth": {
+          "type": "number",
+          "description": "Radial growth per revolution in mm"
+        },
+        "rotations": {
+          "type": "number",
+          "description": "Number of full rotations"
+        },
+        "radius": {
+          "type": "number",
+          "description": "Starting radius in mm"
+        },
+        "name": {
+          "type": "string",
+          "description": "Optional object name"
+        }
+      },
+      "required": [
+        "growth",
+        "rotations",
+        "radius"
+      ]
+    }
+  },
+  "freecad_create_ellipsoid": {
+    "description": "Create an ellipsoid (non-uniform sphere with 3 radii)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "radius1": {
+          "type": "number",
+          "description": "Radius in polar direction (Z)"
+        },
+        "radius2": {
+          "type": "number",
+          "description": "Radius in equatorial direction (X/Y)"
+        },
+        "radius3": {
+          "type": "number",
+          "description": "Third radius for triaxial ellipsoid (default same as radius2)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Optional object name"
+        }
+      },
+      "required": [
+        "radius1",
+        "radius2"
+      ]
+    }
+  },
+  "freecad_create_tube": {
+    "description": "Create a hollow tube/pipe (cylinder with inner hole)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "outerRadius": {
+          "type": "number",
+          "description": "Outer radius in mm"
+        },
+        "innerRadius": {
+          "type": "number",
+          "description": "Inner radius in mm"
+        },
+        "height": {
+          "type": "number",
+          "description": "Tube height in mm"
+        },
+        "name": {
+          "type": "string",
+          "description": "Optional object name"
+        }
+      },
+      "required": [
+        "outerRadius",
+        "innerRadius",
+        "height"
+      ]
+    }
+  },
+  "freecad_create_prism": {
+    "description": "Create a regular prism (polygon extruded to height)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sides": {
+          "type": "number",
+          "description": "Number of sides (3=triangular, 6=hexagonal, etc.)"
+        },
+        "radius": {
+          "type": "number",
+          "description": "Circumscribed circle radius in mm"
+        },
+        "height": {
+          "type": "number",
+          "description": "Prism height in mm"
+        },
+        "name": {
+          "type": "string",
+          "description": "Optional object name"
+        }
+      },
+      "required": [
+        "sides",
+        "radius",
+        "height"
+      ]
+    }
+  },
+  "freecad_boolean_fuse": {
+    "description": "Boolean union (fuse) of two objects into one",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "object1": {
+          "type": "string",
+          "description": "Name of the first object"
+        },
+        "object2": {
+          "type": "string",
+          "description": "Name of the second object"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the resulting fused object"
+        }
+      },
+      "required": [
+        "object1",
+        "object2"
+      ]
+    }
+  },
+  "freecad_boolean_cut": {
+    "description": "Boolean subtraction: cut object2 from object1",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "object1": {
+          "type": "string",
+          "description": "Base object to cut from"
+        },
+        "object2": {
+          "type": "string",
+          "description": "Tool object to subtract"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the resulting cut object"
+        }
+      },
+      "required": [
+        "object1",
+        "object2"
+      ]
+    }
+  },
+  "freecad_boolean_intersect": {
+    "description": "Boolean intersection of two objects (common volume)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "object1": {
+          "type": "string",
+          "description": "Name of the first object"
+        },
+        "object2": {
+          "type": "string",
+          "description": "Name of the second object"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the resulting intersection object"
+        }
+      },
+      "required": [
+        "object1",
+        "object2"
+      ]
+    }
+  },
+  "freecad_fillet": {
+    "description": "Apply fillet (rounded edges) to an object",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object to fillet"
+        },
+        "radius": {
+          "type": "number",
+          "description": "Fillet radius"
+        },
+        "edgeIndices": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "description": "Edge indices to fillet (1-based). All edges if omitted."
+        }
+      },
+      "required": [
+        "objectName",
+        "radius"
+      ]
+    }
+  },
+  "freecad_chamfer": {
+    "description": "Apply chamfer (beveled edges) to an object",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object to chamfer"
+        },
+        "distance": {
+          "type": "number",
+          "description": "Chamfer distance"
+        },
+        "edgeIndices": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "description": "Edge indices to chamfer (1-based). All edges if omitted."
+        }
+      },
+      "required": [
+        "objectName",
+        "distance"
+      ]
+    }
+  },
+  "freecad_move_object": {
+    "description": "Translate (move) an object to a new position",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object to move"
+        },
+        "x": {
+          "type": "number",
+          "description": "X position"
+        },
+        "y": {
+          "type": "number",
+          "description": "Y position"
+        },
+        "z": {
+          "type": "number",
+          "description": "Z position"
+        }
+      },
+      "required": [
+        "objectName",
+        "x",
+        "y",
+        "z"
+      ]
+    }
+  },
+  "freecad_rotate_object": {
+    "description": "Rotate an object around an axis",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object to rotate"
+        },
+        "axis": {
+          "type": "string",
+          "enum": [
+            "x",
+            "y",
+            "z"
+          ],
+          "description": "Rotation axis"
+        },
+        "angle": {
+          "type": "number",
+          "description": "Rotation angle in degrees"
+        }
+      },
+      "required": [
+        "objectName",
+        "axis",
+        "angle"
+      ]
+    }
+  },
+  "freecad_copy_object": {
+    "description": "Duplicate an object in the document",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object to copy"
+        },
+        "newName": {
+          "type": "string",
+          "description": "Name for the copy"
+        }
+      },
+      "required": [
+        "objectName"
+      ]
+    }
+  },
+  "freecad_delete_object": {
+    "description": "Remove an object from the document",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object to delete"
+        }
+      },
+      "required": [
+        "objectName"
+      ]
+    }
+  },
+  "freecad_mirror_object": {
+    "description": "Mirror an object across a plane",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object to mirror"
+        },
+        "plane": {
+          "type": "string",
+          "enum": [
+            "XY",
+            "XZ",
+            "YZ"
+          ],
+          "description": "Mirror plane"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the mirrored object"
+        }
+      },
+      "required": [
+        "objectName",
+        "plane"
+      ]
+    }
+  },
+  "freecad_check_geometry": {
+    "description": "Validate an object's geometry — check for shape errors (self-intersections, open shells, invalid faces, etc.)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object to check"
+        }
+      },
+      "required": [
+        "objectName"
+      ]
+    }
+  },
+  "freecad_refine_shape": {
+    "description": "Remove redundant edges and faces from boolean operation results (clean up artifacts)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object to refine"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the refined object"
+        }
+      },
+      "required": [
+        "objectName"
+      ]
+    }
+  },
+  "freecad_boolean_fragments": {
+    "description": "Split overlapping shapes into all distinct non-overlapping fragments (generalized boolean)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of objects to fragment"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the result"
+        }
+      },
+      "required": [
+        "objectNames"
+      ]
+    }
+  },
+  "freecad_slice": {
+    "description": "Slice an object using another object as a cutting tool (splits into two or more pieces)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "baseName": {
+          "type": "string",
+          "description": "Name of the object to slice"
+        },
+        "toolName": {
+          "type": "string",
+          "description": "Name of the cutting tool object"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the result"
+        }
+      },
+      "required": [
+        "baseName",
+        "toolName"
+      ]
+    }
+  },
+  "freecad_boolean_xor": {
+    "description": "Boolean XOR: keep only the non-overlapping parts of two objects (exclusive OR)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "object1": {
+          "type": "string",
+          "description": "Name of the first object"
+        },
+        "object2": {
+          "type": "string",
+          "description": "Name of the second object"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the result"
+        }
+      },
+      "required": [
+        "object1",
+        "object2"
+      ]
+    }
+  },
+  "freecad_join_connect": {
+    "description": "Connect walled objects (e.g., two pipes meeting) — creates a smooth connection between hollow shapes",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "object1": {
+          "type": "string",
+          "description": "Name of the first walled object"
+        },
+        "object2": {
+          "type": "string",
+          "description": "Name of the second walled object"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the result"
+        }
+      },
+      "required": [
+        "object1",
+        "object2"
+      ]
+    }
+  },
+  "freecad_join_cutout": {
+    "description": "Create a cutout in a walled object for another object to pass through (e.g., pipe through wall)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "object1": {
+          "type": "string",
+          "description": "Name of the object to cut into (e.g., wall)"
+        },
+        "object2": {
+          "type": "string",
+          "description": "Name of the object that passes through"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the result"
+        }
+      },
+      "required": [
+        "object1",
+        "object2"
+      ]
+    }
+  },
+  "freecad_create_sketch": {
+    "description": "Create a new sketch on a plane (XY, XZ, or YZ)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name for the sketch (default: \"Sketch\")"
+        },
+        "plane": {
+          "type": "string",
+          "enum": [
+            "XY",
+            "XZ",
+            "YZ"
+          ],
+          "description": "Plane to create the sketch on (default: \"XY\")"
+        }
+      },
+      "required": []
+    }
+  },
+  "freecad_add_sketch_line": {
+    "description": "Add a line segment to a sketch",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchName": {
+          "type": "string",
+          "description": "Name of the sketch"
+        },
+        "x1": {
+          "type": "number",
+          "description": "Start point X coordinate"
+        },
+        "y1": {
+          "type": "number",
+          "description": "Start point Y coordinate"
+        },
+        "x2": {
+          "type": "number",
+          "description": "End point X coordinate"
+        },
+        "y2": {
+          "type": "number",
+          "description": "End point Y coordinate"
+        }
+      },
+      "required": [
+        "sketchName",
+        "x1",
+        "y1",
+        "x2",
+        "y2"
+      ]
+    }
+  },
+  "freecad_add_sketch_circle": {
+    "description": "Add a circle to a sketch",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchName": {
+          "type": "string",
+          "description": "Name of the sketch"
+        },
+        "centerX": {
+          "type": "number",
+          "description": "Center X coordinate"
+        },
+        "centerY": {
+          "type": "number",
+          "description": "Center Y coordinate"
+        },
+        "radius": {
+          "type": "number",
+          "description": "Circle radius"
+        }
+      },
+      "required": [
+        "sketchName",
+        "centerX",
+        "centerY",
+        "radius"
+      ]
+    }
+  },
+  "freecad_add_sketch_arc": {
+    "description": "Add an arc to a sketch",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchName": {
+          "type": "string",
+          "description": "Name of the sketch"
+        },
+        "centerX": {
+          "type": "number",
+          "description": "Center X coordinate"
+        },
+        "centerY": {
+          "type": "number",
+          "description": "Center Y coordinate"
+        },
+        "radius": {
+          "type": "number",
+          "description": "Arc radius"
+        },
+        "startAngle": {
+          "type": "number",
+          "description": "Start angle in degrees"
+        },
+        "endAngle": {
+          "type": "number",
+          "description": "End angle in degrees"
+        }
+      },
+      "required": [
+        "sketchName",
+        "centerX",
+        "centerY",
+        "radius",
+        "startAngle",
+        "endAngle"
+      ]
+    }
+  },
+  "freecad_add_sketch_rectangle": {
+    "description": "Add a rectangle to a sketch (4 lines with coincidence constraints)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchName": {
+          "type": "string",
+          "description": "Name of the sketch"
+        },
+        "x1": {
+          "type": "number",
+          "description": "First corner X coordinate"
+        },
+        "y1": {
+          "type": "number",
+          "description": "First corner Y coordinate"
+        },
+        "x2": {
+          "type": "number",
+          "description": "Opposite corner X coordinate"
+        },
+        "y2": {
+          "type": "number",
+          "description": "Opposite corner Y coordinate"
+        }
+      },
+      "required": [
+        "sketchName",
+        "x1",
+        "y1",
+        "x2",
+        "y2"
+      ]
+    }
+  },
+  "freecad_add_sketch_constraint": {
+    "description": "Add a constraint to a sketch",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchName": {
+          "type": "string",
+          "description": "Name of the sketch"
+        },
+        "constraintType": {
+          "type": "string",
+          "enum": [
+            "coincident",
+            "horizontal",
+            "vertical",
+            "fixed",
+            "distance",
+            "distanceX",
+            "distanceY",
+            "radius",
+            "diameter",
+            "angle",
+            "equal",
+            "tangent",
+            "perpendicular",
+            "parallel",
+            "pointOnObject",
+            "symmetric"
+          ],
+          "description": "Type of constraint to add"
+        },
+        "index1": {
+          "type": "number",
+          "description": "Index of the first geometry element"
+        },
+        "index2": {
+          "type": "number",
+          "description": "Index of the second geometry element (for two-element constraints)"
+        },
+        "value": {
+          "type": "number",
+          "description": "Value for dimensional constraints (e.g., distance)"
+        }
+      },
+      "required": [
+        "sketchName",
+        "constraintType",
+        "index1"
+      ]
+    }
+  },
+  "freecad_add_sketch_ellipse": {
+    "description": "Add an ellipse to a sketch",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchName": {
+          "type": "string",
+          "description": "Name of the sketch"
+        },
+        "centerX": {
+          "type": "number",
+          "description": "Center X coordinate"
+        },
+        "centerY": {
+          "type": "number",
+          "description": "Center Y coordinate"
+        },
+        "majorRadius": {
+          "type": "number",
+          "description": "Semi-major axis radius"
+        },
+        "minorRadius": {
+          "type": "number",
+          "description": "Semi-minor axis radius"
+        }
+      },
+      "required": [
+        "sketchName",
+        "centerX",
+        "centerY",
+        "majorRadius",
+        "minorRadius"
+      ]
+    }
+  },
+  "freecad_add_sketch_bspline": {
+    "description": "Add a B-spline curve to a sketch through control points",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchName": {
+          "type": "string",
+          "description": "Name of the sketch"
+        },
+        "points": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "x",
+              "y"
+            ]
+          },
+          "description": "Array of {x, y} control points"
+        },
+        "closed": {
+          "type": "boolean",
+          "description": "Close the B-spline (default false)"
+        }
+      },
+      "required": [
+        "sketchName",
+        "points"
+      ]
+    }
+  },
+  "freecad_add_sketch_polygon": {
+    "description": "Add a regular polygon to a sketch (equilateral triangle, square, hexagon, etc.)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchName": {
+          "type": "string",
+          "description": "Name of the sketch"
+        },
+        "centerX": {
+          "type": "number",
+          "description": "Center X coordinate"
+        },
+        "centerY": {
+          "type": "number",
+          "description": "Center Y coordinate"
+        },
+        "radius": {
+          "type": "number",
+          "description": "Circumscribed circle radius"
+        },
+        "sides": {
+          "type": "number",
+          "description": "Number of sides (3=triangle, 4=square, 6=hexagon, etc.)"
+        }
+      },
+      "required": [
+        "sketchName",
+        "centerX",
+        "centerY",
+        "radius",
+        "sides"
+      ]
+    }
+  },
+  "freecad_add_sketch_slot": {
+    "description": "Add a slot (oblong/stadium shape) to a sketch — a rectangle with semicircular ends",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchName": {
+          "type": "string",
+          "description": "Name of the sketch"
+        },
+        "x1": {
+          "type": "number",
+          "description": "First center X coordinate"
+        },
+        "y1": {
+          "type": "number",
+          "description": "First center Y coordinate"
+        },
+        "x2": {
+          "type": "number",
+          "description": "Second center X coordinate"
+        },
+        "y2": {
+          "type": "number",
+          "description": "Second center Y coordinate"
+        },
+        "width": {
+          "type": "number",
+          "description": "Slot width (diameter of the semicircular ends)"
+        }
+      },
+      "required": [
+        "sketchName",
+        "x1",
+        "y1",
+        "x2",
+        "y2",
+        "width"
+      ]
+    }
+  },
+  "freecad_add_sketch_point": {
+    "description": "Add a construction/reference point to a sketch",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchName": {
+          "type": "string",
+          "description": "Name of the sketch"
+        },
+        "x": {
+          "type": "number",
+          "description": "Point X coordinate"
+        },
+        "y": {
+          "type": "number",
+          "description": "Point Y coordinate"
+        }
+      },
+      "required": [
+        "sketchName",
+        "x",
+        "y"
+      ]
+    }
+  },
+  "freecad_add_sketch_external": {
+    "description": "Add external geometry reference to a sketch (project an edge from another object into the sketch for constraining)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchName": {
+          "type": "string",
+          "description": "Name of the sketch"
+        },
+        "objectName": {
+          "type": "string",
+          "description": "Name of the external object"
+        },
+        "edgeName": {
+          "type": "string",
+          "description": "Edge reference (e.g., \"Edge1\")"
+        }
+      },
+      "required": [
+        "sketchName",
+        "objectName",
+        "edgeName"
+      ]
+    }
+  },
+  "freecad_sketch_fillet": {
+    "description": "Create a fillet (rounded corner) at a vertex in a sketch",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchName": {
+          "type": "string",
+          "description": "Name of the sketch"
+        },
+        "vertexIndex": {
+          "type": "number",
+          "description": "Index of the vertex to fillet"
+        },
+        "radius": {
+          "type": "number",
+          "description": "Fillet radius"
+        }
+      },
+      "required": [
+        "sketchName",
+        "vertexIndex",
+        "radius"
+      ]
+    }
+  },
+  "freecad_sketch_trim": {
+    "description": "Trim (cut away) part of a geometry element at intersection points",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchName": {
+          "type": "string",
+          "description": "Name of the sketch"
+        },
+        "geoIndex": {
+          "type": "number",
+          "description": "Index of the geometry element to trim"
+        },
+        "posX": {
+          "type": "number",
+          "description": "X coordinate of point near the part to remove"
+        },
+        "posY": {
+          "type": "number",
+          "description": "Y coordinate of point near the part to remove"
+        }
+      },
+      "required": [
+        "sketchName",
+        "geoIndex",
+        "posX",
+        "posY"
+      ]
+    }
+  },
+  "freecad_sketch_toggle_construction": {
+    "description": "Toggle a geometry element between construction mode and regular mode. Construction geometry is used for reference only.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchName": {
+          "type": "string",
+          "description": "Name of the sketch"
+        },
+        "geoIndex": {
+          "type": "number",
+          "description": "Index of the geometry element to toggle"
+        }
+      },
+      "required": [
+        "sketchName",
+        "geoIndex"
+      ]
+    }
+  },
+  "freecad_close_sketch": {
+    "description": "Close and recompute a sketch",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchName": {
+          "type": "string",
+          "description": "Name of the sketch to close/recompute"
+        }
+      },
+      "required": [
+        "sketchName"
+      ]
+    }
+  },
+  "freecad_pad": {
+    "description": "Extrude a sketch into a solid (PartDesign Pad). Creates a PartDesign Body if one does not exist.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchName": {
+          "type": "string",
+          "description": "Name of the sketch to extrude"
+        },
+        "length": {
+          "type": "number",
+          "description": "Extrusion length in mm"
+        },
+        "symmetric": {
+          "type": "boolean",
+          "description": "Extrude symmetrically in both directions"
+        },
+        "reversed": {
+          "type": "boolean",
+          "description": "Extrude in the reversed direction"
+        },
+        "name": {
+          "type": "string",
+          "description": "Optional name for the Pad feature"
+        }
+      },
+      "required": [
+        "sketchName",
+        "length"
+      ]
+    }
+  },
+  "freecad_pocket": {
+    "description": "Cut into a solid from a sketch (PartDesign Pocket)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchName": {
+          "type": "string",
+          "description": "Name of the sketch defining the pocket profile"
+        },
+        "depth": {
+          "type": "number",
+          "description": "Pocket depth in mm"
+        },
+        "name": {
+          "type": "string",
+          "description": "Optional name for the Pocket feature"
+        }
+      },
+      "required": [
+        "sketchName",
+        "depth"
+      ]
+    }
+  },
+  "freecad_revolve": {
+    "description": "Revolve a sketch around an axis (PartDesign Revolution)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchName": {
+          "type": "string",
+          "description": "Name of the sketch to revolve"
+        },
+        "angle": {
+          "type": "number",
+          "description": "Revolution angle in degrees (default 360)"
+        },
+        "axisX": {
+          "type": "number",
+          "description": "X component of revolution axis (default 0)"
+        },
+        "axisY": {
+          "type": "number",
+          "description": "Y component of revolution axis (default 1)"
+        },
+        "axisZ": {
+          "type": "number",
+          "description": "Z component of revolution axis (default 0)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Optional name for the Revolution feature"
+        }
+      },
+      "required": [
+        "sketchName"
+      ]
+    }
+  },
+  "freecad_loft": {
+    "description": "Loft between two or more sketches/profiles to create a solid",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Array of sketch/profile names to loft between"
+        },
+        "solid": {
+          "type": "boolean",
+          "description": "Create a solid (default true)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Optional name for the Loft feature"
+        }
+      },
+      "required": [
+        "sketchNames"
+      ]
+    }
+  },
+  "freecad_sweep": {
+    "description": "Sweep a profile along a path to create a solid",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "profileName": {
+          "type": "string",
+          "description": "Name of the profile sketch to sweep"
+        },
+        "pathName": {
+          "type": "string",
+          "description": "Name of the path edge/wire to sweep along"
+        },
+        "solid": {
+          "type": "boolean",
+          "description": "Create a solid (default true)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Optional name for the Sweep feature"
+        }
+      },
+      "required": [
+        "profileName",
+        "pathName"
+      ]
+    }
+  },
+  "freecad_partdesign_fillet": {
+    "description": "Fillet (round) edges on a PartDesign body",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object whose edges to fillet"
+        },
+        "radius": {
+          "type": "number",
+          "description": "Fillet radius in mm"
+        },
+        "edgeNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional list of edge names (e.g. [\"Edge1\",\"Edge2\"]). If omitted, all edges are filleted."
+        },
+        "name": {
+          "type": "string",
+          "description": "Optional name for the Fillet feature"
+        }
+      },
+      "required": [
+        "objectName",
+        "radius"
+      ]
+    }
+  },
+  "freecad_partdesign_chamfer": {
+    "description": "Chamfer edges on a PartDesign body",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object whose edges to chamfer"
+        },
+        "size": {
+          "type": "number",
+          "description": "Chamfer size in mm"
+        },
+        "edgeNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional list of edge names (e.g. [\"Edge1\",\"Edge2\"]). If omitted, all edges are chamfered."
+        },
+        "name": {
+          "type": "string",
+          "description": "Optional name for the Chamfer feature"
+        }
+      },
+      "required": [
+        "objectName",
+        "size"
+      ]
+    }
+  },
+  "freecad_hole": {
+    "description": "Create a hole (drill, counterbore, countersink) in a PartDesign body from a sketch with a circle",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchName": {
+          "type": "string",
+          "description": "Name of the sketch containing the hole center(s)"
+        },
+        "diameter": {
+          "type": "number",
+          "description": "Hole diameter in mm"
+        },
+        "depth": {
+          "type": "number",
+          "description": "Hole depth in mm (0 = through all)"
+        },
+        "holeType": {
+          "type": "string",
+          "enum": [
+            "simple",
+            "counterbore",
+            "countersink"
+          ],
+          "description": "Hole type (default: simple)"
+        },
+        "counterboreDiameter": {
+          "type": "number",
+          "description": "Counterbore diameter (for counterbore type)"
+        },
+        "counterboreDepth": {
+          "type": "number",
+          "description": "Counterbore depth (for counterbore type)"
+        },
+        "countersinkAngle": {
+          "type": "number",
+          "description": "Countersink angle in degrees (for countersink type, default 90)"
+        },
+        "threaded": {
+          "type": "boolean",
+          "description": "Add threading (default false)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the Hole feature"
+        }
+      },
+      "required": [
+        "sketchName",
+        "diameter"
+      ]
+    }
+  },
+  "freecad_partdesign_thickness": {
+    "description": "Shell/hollow out a PartDesign body by removing selected faces and offsetting the rest inward",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the feature to hollow (e.g. Pad name)"
+        },
+        "thickness": {
+          "type": "number",
+          "description": "Wall thickness in mm"
+        },
+        "faceNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Faces to remove as openings (e.g. [\"Face6\"])"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the Thickness feature"
+        }
+      },
+      "required": [
+        "objectName",
+        "thickness",
+        "faceNames"
+      ]
+    }
+  },
+  "freecad_linear_pattern": {
+    "description": "Create a linear pattern of a PartDesign feature (repeat feature at regular intervals along a direction)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "featureName": {
+          "type": "string",
+          "description": "Name of the PartDesign feature to pattern"
+        },
+        "directionAxis": {
+          "type": "string",
+          "enum": [
+            "x",
+            "y",
+            "z"
+          ],
+          "description": "Pattern direction axis (default: x)"
+        },
+        "length": {
+          "type": "number",
+          "description": "Total length of the pattern in mm"
+        },
+        "occurrences": {
+          "type": "number",
+          "description": "Number of occurrences (including original)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the LinearPattern feature"
+        }
+      },
+      "required": [
+        "featureName",
+        "length",
+        "occurrences"
+      ]
+    }
+  },
+  "freecad_polar_pattern": {
+    "description": "Create a polar (circular) pattern of a PartDesign feature around an axis",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "featureName": {
+          "type": "string",
+          "description": "Name of the PartDesign feature to pattern"
+        },
+        "axis": {
+          "type": "string",
+          "enum": [
+            "x",
+            "y",
+            "z"
+          ],
+          "description": "Rotation axis (default: z)"
+        },
+        "angle": {
+          "type": "number",
+          "description": "Total angle in degrees (default 360)"
+        },
+        "occurrences": {
+          "type": "number",
+          "description": "Number of occurrences (including original)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the PolarPattern feature"
+        }
+      },
+      "required": [
+        "featureName",
+        "occurrences"
+      ]
+    }
+  },
+  "freecad_partdesign_mirrored": {
+    "description": "Mirror a PartDesign feature across a plane",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "featureName": {
+          "type": "string",
+          "description": "Name of the PartDesign feature to mirror"
+        },
+        "plane": {
+          "type": "string",
+          "enum": [
+            "XY",
+            "XZ",
+            "YZ"
+          ],
+          "description": "Mirror plane (default: YZ)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the Mirrored feature"
+        }
+      },
+      "required": [
+        "featureName"
+      ]
+    }
+  },
+  "freecad_additive_helix": {
+    "description": "Sweep a sketch profile along a helix path to add material (for springs, threads, coils)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchName": {
+          "type": "string",
+          "description": "Name of the profile sketch"
+        },
+        "pitch": {
+          "type": "number",
+          "description": "Distance between turns in mm"
+        },
+        "height": {
+          "type": "number",
+          "description": "Total helix height in mm"
+        },
+        "turns": {
+          "type": "number",
+          "description": "Number of turns (alternative to height — provide one or the other)"
+        },
+        "leftHanded": {
+          "type": "boolean",
+          "description": "Left-handed helix (default false)"
+        },
+        "reversed": {
+          "type": "boolean",
+          "description": "Reverse growth direction (default false)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the feature"
+        }
+      },
+      "required": [
+        "sketchName",
+        "pitch"
+      ]
+    }
+  },
+  "freecad_subtractive_helix": {
+    "description": "Sweep a sketch profile along a helix path to remove material (for cutting threads, helical grooves)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchName": {
+          "type": "string",
+          "description": "Name of the profile sketch"
+        },
+        "pitch": {
+          "type": "number",
+          "description": "Distance between turns in mm"
+        },
+        "height": {
+          "type": "number",
+          "description": "Total helix height in mm"
+        },
+        "turns": {
+          "type": "number",
+          "description": "Number of turns (alternative to height)"
+        },
+        "leftHanded": {
+          "type": "boolean",
+          "description": "Left-handed helix (default false)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the feature"
+        }
+      },
+      "required": [
+        "sketchName",
+        "pitch"
+      ]
+    }
+  },
+  "freecad_additive_pipe": {
+    "description": "Sweep a sketch profile along a spine path to add material (pipe/tube along complex paths)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "profileName": {
+          "type": "string",
+          "description": "Name of the profile sketch"
+        },
+        "spineName": {
+          "type": "string",
+          "description": "Name of the spine/path object (wire/edge)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the feature"
+        }
+      },
+      "required": [
+        "profileName",
+        "spineName"
+      ]
+    }
+  },
+  "freecad_subtractive_pipe": {
+    "description": "Sweep a sketch profile along a spine path to remove material (cut channel along path)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "profileName": {
+          "type": "string",
+          "description": "Name of the profile sketch"
+        },
+        "spineName": {
+          "type": "string",
+          "description": "Name of the spine/path object (wire/edge)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the feature"
+        }
+      },
+      "required": [
+        "profileName",
+        "spineName"
+      ]
+    }
+  },
+  "freecad_groove": {
+    "description": "Subtractive revolution — rotate a sketch profile to remove material (lathe-cut grooves, channels)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sketchName": {
+          "type": "string",
+          "description": "Name of the sketch profile"
+        },
+        "angle": {
+          "type": "number",
+          "description": "Revolution angle in degrees (default 360)"
+        },
+        "axisX": {
+          "type": "number",
+          "description": "X component of revolution axis (default 0)"
+        },
+        "axisY": {
+          "type": "number",
+          "description": "Y component of revolution axis (default 1)"
+        },
+        "axisZ": {
+          "type": "number",
+          "description": "Z component of revolution axis (default 0)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the feature"
+        }
+      },
+      "required": [
+        "sketchName"
+      ]
+    }
+  },
+  "freecad_draft_angle": {
+    "description": "Apply a draft angle to faces of a PartDesign body (tapered faces for injection molding)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "featureName": {
+          "type": "string",
+          "description": "Name of the feature whose faces to draft"
+        },
+        "faceNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Faces to apply draft to (e.g., [\"Face1\", \"Face3\"])"
+        },
+        "angle": {
+          "type": "number",
+          "description": "Draft angle in degrees (default 5)"
+        },
+        "pullDirection": {
+          "type": "string",
+          "description": "Face that defines pull direction (e.g., \"Face6\")"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the feature"
+        }
+      },
+      "required": [
+        "featureName",
+        "faceNames",
+        "angle"
+      ]
+    }
+  },
+  "freecad_multi_transform": {
+    "description": "Combine multiple transformations (mirror + linear pattern + polar pattern) into one feature",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "featureName": {
+          "type": "string",
+          "description": "Name of the PartDesign feature to transform"
+        },
+        "transformNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of existing transformation features to combine (e.g., [\"Mirrored\", \"LinearPattern\"])"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the MultiTransform feature"
+        }
+      },
+      "required": [
+        "featureName",
+        "transformNames"
+      ]
+    }
+  },
+  "freecad_shape_binder": {
+    "description": "Create a ShapeBinder to reference external geometry inside a PartDesign body",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the external object to reference"
+        },
+        "subElements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Sub-elements to bind (e.g., [\"Face1\", \"Edge2\"]). If empty, binds entire shape."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the ShapeBinder"
+        }
+      },
+      "required": [
+        "objectName"
+      ]
+    }
+  },
+  "freecad_import_step": {
+    "description": "Import a STEP file into a FreeCAD document.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "filePath": {
+          "type": "string",
+          "description": "Absolute path to the STEP file"
+        },
+        "documentName": {
+          "type": "string",
+          "description": "Optional document name to import into"
+        }
+      },
+      "required": [
+        "filePath"
+      ]
+    }
+  },
+  "freecad_import_stl": {
+    "description": "Import an STL file into a FreeCAD document.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "filePath": {
+          "type": "string",
+          "description": "Absolute path to the STL file"
+        },
+        "documentName": {
+          "type": "string",
+          "description": "Optional document name to import into"
+        }
+      },
+      "required": [
+        "filePath"
+      ]
+    }
+  },
+  "freecad_export_step": {
+    "description": "Export objects to a STEP file.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of objects to export"
+        },
+        "filePath": {
+          "type": "string",
+          "description": "Absolute path for the output STEP file"
+        }
+      },
+      "required": [
+        "objectNames",
+        "filePath"
+      ]
+    }
+  },
+  "freecad_export_stl": {
+    "description": "Export objects to an STL file.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of objects to export"
+        },
+        "filePath": {
+          "type": "string",
+          "description": "Absolute path for the output STL file"
+        }
+      },
+      "required": [
+        "objectNames",
+        "filePath"
+      ]
+    }
+  },
+  "freecad_export_obj": {
+    "description": "Export objects to an OBJ file.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of objects to export"
+        },
+        "filePath": {
+          "type": "string",
+          "description": "Absolute path for the output OBJ file"
+        }
+      },
+      "required": [
+        "objectNames",
+        "filePath"
+      ]
+    }
+  },
+  "freecad_measure_distance": {
+    "description": "Measure the distance between two points or two object centers.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "point1": {
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "z": {
+              "type": "number"
+            }
+          },
+          "description": "First point (x, y, z)"
+        },
+        "point2": {
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "z": {
+              "type": "number"
+            }
+          },
+          "description": "Second point (x, y, z)"
+        },
+        "object1Name": {
+          "type": "string",
+          "description": "Name of first object (uses bounding box center)"
+        },
+        "object2Name": {
+          "type": "string",
+          "description": "Name of second object (uses bounding box center)"
+        }
+      }
+    }
+  },
+  "freecad_measure_angle": {
+    "description": "Measure the angle between two faces of an object.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object"
+        },
+        "face1": {
+          "type": "string",
+          "description": "First face reference (e.g. \"Face1\")"
+        },
+        "face2": {
+          "type": "string",
+          "description": "Second face reference (e.g. \"Face2\")"
+        }
+      },
+      "required": [
+        "objectName",
+        "face1",
+        "face2"
+      ]
+    }
+  },
+  "freecad_get_volume": {
+    "description": "Get the volume of an object.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object"
+        }
+      },
+      "required": [
+        "objectName"
+      ]
+    }
+  },
+  "freecad_get_bounding_box": {
+    "description": "Get the bounding box of an object.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object"
+        }
+      },
+      "required": [
+        "objectName"
+      ]
+    }
+  },
+  "freecad_execute_python": {
+    "description": "Execute arbitrary FreeCAD Python code. WARNING: This tool runs arbitrary Python code with full system access. Only use in trusted environments. The code runs in a context with FreeCAD and Part already imported. Set _mcp_result[\"result\"] to return data.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Python code to execute in FreeCAD"
+        }
+      },
+      "required": [
+        "code"
+      ]
+    }
+  },
+  "freecad_import_iges": {
+    "description": "Import an IGES file into a FreeCAD document.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "filePath": {
+          "type": "string",
+          "description": "Absolute path to the IGES file (.igs or .iges)"
+        }
+      },
+      "required": [
+        "filePath"
+      ]
+    }
+  },
+  "freecad_import_dxf": {
+    "description": "Import a DXF file into a FreeCAD document.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "filePath": {
+          "type": "string",
+          "description": "Absolute path to the DXF file"
+        }
+      },
+      "required": [
+        "filePath"
+      ]
+    }
+  },
+  "freecad_import_svg": {
+    "description": "Import an SVG file into a FreeCAD document.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "filePath": {
+          "type": "string",
+          "description": "Absolute path to the SVG file"
+        }
+      },
+      "required": [
+        "filePath"
+      ]
+    }
+  },
+  "freecad_export_iges": {
+    "description": "Export objects to an IGES file.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of objects to export"
+        },
+        "filePath": {
+          "type": "string",
+          "description": "Absolute path for the output IGES file"
+        }
+      },
+      "required": [
+        "objectNames",
+        "filePath"
+      ]
+    }
+  },
+  "freecad_export_dxf": {
+    "description": "Export objects to a DXF file.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of objects to export"
+        },
+        "filePath": {
+          "type": "string",
+          "description": "Absolute path for the output DXF file"
+        }
+      },
+      "required": [
+        "objectNames",
+        "filePath"
+      ]
+    }
+  },
+  "freecad_export_svg": {
+    "description": "Export objects to an SVG file (projected 2D view).",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of objects to export"
+        },
+        "filePath": {
+          "type": "string",
+          "description": "Absolute path for the output SVG file"
+        },
+        "direction": {
+          "type": "string",
+          "enum": [
+            "Front",
+            "Top",
+            "Right",
+            "Isometric"
+          ],
+          "description": "Projection direction (default: Front)"
+        }
+      },
+      "required": [
+        "objectNames",
+        "filePath"
+      ]
+    }
+  },
+  "freecad_export_brep": {
+    "description": "Export objects to BREP format (native OpenCASCADE boundary representation).",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object to export"
+        },
+        "filePath": {
+          "type": "string",
+          "description": "Absolute path for the output BREP file"
+        }
+      },
+      "required": [
+        "objectName",
+        "filePath"
+      ]
+    }
+  },
+  "freecad_draft_wire": {
+    "description": "Create a multi-segment wire (polyline) from a list of points",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "points": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              },
+              "z": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "description": "Array of {x, y, z} points defining the wire"
+        },
+        "closed": {
+          "type": "boolean",
+          "description": "Close the wire (default false)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the wire object"
+        }
+      },
+      "required": [
+        "points"
+      ]
+    }
+  },
+  "freecad_draft_bspline": {
+    "description": "Create a B-spline curve through a list of points",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "points": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              },
+              "z": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "description": "Array of {x, y, z} control/interpolation points"
+        },
+        "closed": {
+          "type": "boolean",
+          "description": "Close the spline (default false)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the B-spline object"
+        }
+      },
+      "required": [
+        "points"
+      ]
+    }
+  },
+  "freecad_draft_polygon": {
+    "description": "Create a regular polygon (triangle, hexagon, etc.)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sides": {
+          "type": "number",
+          "description": "Number of sides (3=triangle, 6=hexagon, etc.)"
+        },
+        "radius": {
+          "type": "number",
+          "description": "Circumscribed circle radius"
+        },
+        "x": {
+          "type": "number",
+          "description": "Center X position (default 0)"
+        },
+        "y": {
+          "type": "number",
+          "description": "Center Y position (default 0)"
+        },
+        "z": {
+          "type": "number",
+          "description": "Center Z position (default 0)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the polygon object"
+        }
+      },
+      "required": [
+        "sides",
+        "radius"
+      ]
+    }
+  },
+  "freecad_draft_ellipse": {
+    "description": "Create an ellipse shape",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "majorRadius": {
+          "type": "number",
+          "description": "Major (semi) axis radius"
+        },
+        "minorRadius": {
+          "type": "number",
+          "description": "Minor (semi) axis radius"
+        },
+        "x": {
+          "type": "number",
+          "description": "Center X position (default 0)"
+        },
+        "y": {
+          "type": "number",
+          "description": "Center Y position (default 0)"
+        },
+        "z": {
+          "type": "number",
+          "description": "Center Z position (default 0)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the ellipse"
+        }
+      },
+      "required": [
+        "majorRadius",
+        "minorRadius"
+      ]
+    }
+  },
+  "freecad_draft_rectangle": {
+    "description": "Create a Draft rectangle on the XY plane",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": "number",
+          "description": "Rectangle width (X direction)"
+        },
+        "height": {
+          "type": "number",
+          "description": "Rectangle height (Y direction)"
+        },
+        "x": {
+          "type": "number",
+          "description": "Corner X position (default 0)"
+        },
+        "y": {
+          "type": "number",
+          "description": "Corner Y position (default 0)"
+        },
+        "z": {
+          "type": "number",
+          "description": "Corner Z position (default 0)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the rectangle"
+        }
+      },
+      "required": [
+        "width",
+        "height"
+      ]
+    }
+  },
+  "freecad_draft_facebinder": {
+    "description": "Create a face from one or more faces of existing objects",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the source object"
+        },
+        "faceNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Face names to bind (e.g. [\"Face1\", \"Face2\"])"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the FaceBinder"
+        }
+      },
+      "required": [
+        "objectName",
+        "faceNames"
+      ]
+    }
+  },
+  "freecad_draft_clone": {
+    "description": "Create a parametric clone of one or more objects (linked copies that update with the original)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of objects to clone"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the clone"
+        }
+      },
+      "required": [
+        "objectNames"
+      ]
+    }
+  },
+  "freecad_draft_shapestring": {
+    "description": "Create 3D text as a wire/face shape from a font file (for engraving, labels, 3D text)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "Text string to create"
+        },
+        "size": {
+          "type": "number",
+          "description": "Font size in mm (default 10)"
+        },
+        "fontFile": {
+          "type": "string",
+          "description": "Absolute path to TTF font file (uses default if omitted)"
+        },
+        "x": {
+          "type": "number",
+          "description": "X position (default 0)"
+        },
+        "y": {
+          "type": "number",
+          "description": "Y position (default 0)"
+        },
+        "z": {
+          "type": "number",
+          "description": "Z position (default 0)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the ShapeString"
+        }
+      },
+      "required": [
+        "text"
+      ]
+    }
+  },
+  "freecad_draft_move": {
+    "description": "Move (translate) objects with optional copy",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of objects to move"
+        },
+        "x": {
+          "type": "number",
+          "description": "X translation"
+        },
+        "y": {
+          "type": "number",
+          "description": "Y translation"
+        },
+        "z": {
+          "type": "number",
+          "description": "Z translation"
+        },
+        "copy": {
+          "type": "boolean",
+          "description": "Create a copy instead of moving (default false)"
+        }
+      },
+      "required": [
+        "objectNames",
+        "x",
+        "y",
+        "z"
+      ]
+    }
+  },
+  "freecad_draft_rotate": {
+    "description": "Rotate objects around a center point with optional copy",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of objects to rotate"
+        },
+        "angle": {
+          "type": "number",
+          "description": "Rotation angle in degrees"
+        },
+        "centerX": {
+          "type": "number",
+          "description": "Center of rotation X (default 0)"
+        },
+        "centerY": {
+          "type": "number",
+          "description": "Center of rotation Y (default 0)"
+        },
+        "centerZ": {
+          "type": "number",
+          "description": "Center of rotation Z (default 0)"
+        },
+        "axisX": {
+          "type": "number",
+          "description": "Rotation axis X (default 0)"
+        },
+        "axisY": {
+          "type": "number",
+          "description": "Rotation axis Y (default 0)"
+        },
+        "axisZ": {
+          "type": "number",
+          "description": "Rotation axis Z (default 1)"
+        },
+        "copy": {
+          "type": "boolean",
+          "description": "Create a copy instead of rotating (default false)"
+        }
+      },
+      "required": [
+        "objectNames",
+        "angle"
+      ]
+    }
+  },
+  "freecad_draft_scale": {
+    "description": "Scale objects from a center point with optional copy",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of objects to scale"
+        },
+        "scaleX": {
+          "type": "number",
+          "description": "Scale factor X"
+        },
+        "scaleY": {
+          "type": "number",
+          "description": "Scale factor Y (default same as X)"
+        },
+        "scaleZ": {
+          "type": "number",
+          "description": "Scale factor Z (default same as X)"
+        },
+        "centerX": {
+          "type": "number",
+          "description": "Center of scale X (default 0)"
+        },
+        "centerY": {
+          "type": "number",
+          "description": "Center of scale Y (default 0)"
+        },
+        "centerZ": {
+          "type": "number",
+          "description": "Center of scale Z (default 0)"
+        },
+        "copy": {
+          "type": "boolean",
+          "description": "Create a copy (default true)"
+        }
+      },
+      "required": [
+        "objectNames",
+        "scaleX"
+      ]
+    }
+  },
+  "freecad_draft_offset": {
+    "description": "Offset a 2D wire/edge by a distance (inward or outward)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the wire/edge to offset"
+        },
+        "distance": {
+          "type": "number",
+          "description": "Offset distance (positive = outward, negative = inward)"
+        },
+        "copy": {
+          "type": "boolean",
+          "description": "Create a copy (default true)"
+        }
+      },
+      "required": [
+        "objectName",
+        "distance"
+      ]
+    }
+  },
+  "freecad_draft_upgrade": {
+    "description": "Upgrade objects: join wires into faces, faces into shells/solids",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of objects to upgrade"
+        }
+      },
+      "required": [
+        "objectNames"
+      ]
+    }
+  },
+  "freecad_draft_downgrade": {
+    "description": "Downgrade objects: split solids into faces, faces into wires, wires into edges",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of objects to downgrade"
+        }
+      },
+      "required": [
+        "objectNames"
+      ]
+    }
+  },
+  "freecad_draft_path_array": {
+    "description": "Distribute copies of an object along a path/wire",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object to array"
+        },
+        "pathName": {
+          "type": "string",
+          "description": "Name of the path wire/edge"
+        },
+        "count": {
+          "type": "number",
+          "description": "Number of copies along the path"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the array"
+        }
+      },
+      "required": [
+        "objectName",
+        "pathName",
+        "count"
+      ]
+    }
+  },
+  "freecad_draft_dimension": {
+    "description": "Add a dimension annotation between two points",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "point1X": {
+          "type": "number",
+          "description": "First point X"
+        },
+        "point1Y": {
+          "type": "number",
+          "description": "First point Y"
+        },
+        "point1Z": {
+          "type": "number",
+          "description": "First point Z (default 0)"
+        },
+        "point2X": {
+          "type": "number",
+          "description": "Second point X"
+        },
+        "point2Y": {
+          "type": "number",
+          "description": "Second point Y"
+        },
+        "point2Z": {
+          "type": "number",
+          "description": "Second point Z (default 0)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the dimension"
+        }
+      },
+      "required": [
+        "point1X",
+        "point1Y",
+        "point2X",
+        "point2Y"
+      ]
+    }
+  },
+  "freecad_draft_shape2dview": {
+    "description": "Project a 3D object to a 2D view (flattened projection for technical drawings)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the 3D object to project"
+        },
+        "directionX": {
+          "type": "number",
+          "description": "Projection direction X (default 0)"
+        },
+        "directionY": {
+          "type": "number",
+          "description": "Projection direction Y (default 0)"
+        },
+        "directionZ": {
+          "type": "number",
+          "description": "Projection direction Z (default -1, i.e., top view)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the 2D view"
+        }
+      },
+      "required": [
+        "objectName"
+      ]
+    }
+  },
+  "freecad_mesh_from_shape": {
+    "description": "Convert a Part shape to a mesh (tessellate a solid/surface into triangles)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the Part object to tessellate"
+        },
+        "linearDeflection": {
+          "type": "number",
+          "description": "Max linear deviation in mm (default 0.1, lower = finer mesh)"
+        },
+        "angularDeflection": {
+          "type": "number",
+          "description": "Max angular deviation in degrees (default 30)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the mesh object"
+        }
+      },
+      "required": [
+        "objectName"
+      ]
+    }
+  },
+  "freecad_mesh_to_shape": {
+    "description": "Convert a mesh to a Part shape (reconstruct solid from triangles). Useful for editing imported STL files.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "meshName": {
+          "type": "string",
+          "description": "Name of the Mesh object to convert"
+        },
+        "sewing": {
+          "type": "boolean",
+          "description": "Try to sew the shape into a solid (default true)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the resulting Part shape"
+        }
+      },
+      "required": [
+        "meshName"
+      ]
+    }
+  },
+  "freecad_mesh_repair": {
+    "description": "Repair a mesh by fixing defects (fill holes, remove duplicates, fix normals, merge close vertices)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "meshName": {
+          "type": "string",
+          "description": "Name of the Mesh object to repair"
+        },
+        "fillHoles": {
+          "type": "boolean",
+          "description": "Fill holes in the mesh (default true)"
+        },
+        "removeDuplicates": {
+          "type": "boolean",
+          "description": "Remove duplicate facets (default true)"
+        },
+        "fixNormals": {
+          "type": "boolean",
+          "description": "Fix/harmonize face normals (default true)"
+        }
+      },
+      "required": [
+        "meshName"
+      ]
+    }
+  },
+  "freecad_mesh_decimate": {
+    "description": "Reduce the number of triangles in a mesh while preserving shape (mesh simplification)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "meshName": {
+          "type": "string",
+          "description": "Name of the Mesh object to decimate"
+        },
+        "targetReduction": {
+          "type": "number",
+          "description": "Target reduction ratio (0.0-1.0, e.g. 0.5 = reduce by 50%)"
+        }
+      },
+      "required": [
+        "meshName",
+        "targetReduction"
+      ]
+    }
+  },
+  "freecad_mesh_refine": {
+    "description": "Subdivide/refine a mesh to increase triangle density",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "meshName": {
+          "type": "string",
+          "description": "Name of the Mesh object to refine"
+        },
+        "maxEdgeLength": {
+          "type": "number",
+          "description": "Max edge length — edges longer than this will be split (in mm)"
+        }
+      },
+      "required": [
+        "meshName",
+        "maxEdgeLength"
+      ]
+    }
+  },
+  "freecad_mesh_info": {
+    "description": "Get mesh statistics: vertex count, facet count, surface area, volume, bounding box, and topology info",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "meshName": {
+          "type": "string",
+          "description": "Name of the Mesh object to inspect"
+        }
+      },
+      "required": [
+        "meshName"
+      ]
+    }
+  },
+  "freecad_mesh_boolean": {
+    "description": "Perform boolean operations on meshes (union, intersection, difference)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "mesh1Name": {
+          "type": "string",
+          "description": "Name of the first mesh"
+        },
+        "mesh2Name": {
+          "type": "string",
+          "description": "Name of the second mesh"
+        },
+        "operation": {
+          "type": "string",
+          "enum": [
+            "union",
+            "intersection",
+            "difference"
+          ],
+          "description": "Boolean operation type"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the result mesh"
+        }
+      },
+      "required": [
+        "mesh1Name",
+        "mesh2Name",
+        "operation"
+      ]
+    }
+  },
+  "freecad_techdraw_create_page": {
+    "description": "Create a TechDraw drawing page with a template (A4, A3, A2, A1, A0, or Letter)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "template": {
+          "type": "string",
+          "enum": [
+            "A4_Landscape",
+            "A4_Portrait",
+            "A3_Landscape",
+            "A3_Portrait",
+            "A2_Landscape",
+            "A1_Landscape",
+            "A0_Landscape",
+            "USLetter_Landscape",
+            "USLetter_Portrait"
+          ],
+          "description": "Page template (default: A4_Landscape)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the drawing page"
+        }
+      },
+      "required": []
+    }
+  },
+  "freecad_techdraw_add_view": {
+    "description": "Add an orthographic view projection of a 3D object to a TechDraw page",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "pageName": {
+          "type": "string",
+          "description": "Name of the TechDraw page"
+        },
+        "objectName": {
+          "type": "string",
+          "description": "Name of the 3D object to project"
+        },
+        "direction": {
+          "type": "string",
+          "enum": [
+            "Front",
+            "Back",
+            "Top",
+            "Bottom",
+            "Left",
+            "Right",
+            "Isometric"
+          ],
+          "description": "View direction (default: Front)"
+        },
+        "scale": {
+          "type": "number",
+          "description": "View scale factor (default 1.0)"
+        },
+        "x": {
+          "type": "number",
+          "description": "X position on the page in mm (default auto)"
+        },
+        "y": {
+          "type": "number",
+          "description": "Y position on the page in mm (default auto)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the view"
+        }
+      },
+      "required": [
+        "pageName",
+        "objectName"
+      ]
+    }
+  },
+  "freecad_techdraw_add_projection_group": {
+    "description": "Add a multi-view projection group (front + top + right + isometric views at once)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "pageName": {
+          "type": "string",
+          "description": "Name of the TechDraw page"
+        },
+        "objectName": {
+          "type": "string",
+          "description": "Name of the 3D object to project"
+        },
+        "views": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Views to include: \"Front\", \"Rear\", \"Top\", \"Bottom\", \"Left\", \"Right\" (default: [\"Front\", \"Top\", \"Right\"])"
+        },
+        "scale": {
+          "type": "number",
+          "description": "View scale factor (default 1.0)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the projection group"
+        }
+      },
+      "required": [
+        "pageName",
+        "objectName"
+      ]
+    }
+  },
+  "freecad_techdraw_add_dimension": {
+    "description": "Add a length dimension to a TechDraw view between two vertices or along an edge",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "pageName": {
+          "type": "string",
+          "description": "Name of the TechDraw page"
+        },
+        "viewName": {
+          "type": "string",
+          "description": "Name of the TechDraw view"
+        },
+        "dimensionType": {
+          "type": "string",
+          "enum": [
+            "distance",
+            "horizontal",
+            "vertical",
+            "radius",
+            "diameter",
+            "angle"
+          ],
+          "description": "Type of dimension"
+        },
+        "edge": {
+          "type": "string",
+          "description": "Edge reference (e.g., \"Edge1\") for single-edge dimensions"
+        },
+        "vertex1": {
+          "type": "string",
+          "description": "First vertex reference (e.g., \"Vertex1\") for vertex-to-vertex dimensions"
+        },
+        "vertex2": {
+          "type": "string",
+          "description": "Second vertex reference for vertex-to-vertex dimensions"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the dimension"
+        }
+      },
+      "required": [
+        "pageName",
+        "viewName",
+        "dimensionType"
+      ]
+    }
+  },
+  "freecad_techdraw_export_svg": {
+    "description": "Export a TechDraw page to an SVG file",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "pageName": {
+          "type": "string",
+          "description": "Name of the TechDraw page to export"
+        },
+        "filePath": {
+          "type": "string",
+          "description": "Absolute path for the output SVG file"
+        }
+      },
+      "required": [
+        "pageName",
+        "filePath"
+      ]
+    }
+  },
+  "freecad_techdraw_export_dxf": {
+    "description": "Export a TechDraw page to a DXF file",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "pageName": {
+          "type": "string",
+          "description": "Name of the TechDraw page to export"
+        },
+        "filePath": {
+          "type": "string",
+          "description": "Absolute path for the output DXF file"
+        }
+      },
+      "required": [
+        "pageName",
+        "filePath"
+      ]
+    }
+  },
+  "freecad_thickness": {
+    "description": "Hollow out a solid by offsetting faces inward (shell operation). Removes selected faces and offsets the rest.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the solid object to hollow"
+        },
+        "thickness": {
+          "type": "number",
+          "description": "Wall thickness in mm"
+        },
+        "faceNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Faces to remove (e.g. [\"Face1\"]). These become the openings."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the result"
+        }
+      },
+      "required": [
+        "objectName",
+        "thickness",
+        "faceNames"
+      ]
+    }
+  },
+  "freecad_offset_3d": {
+    "description": "Create a 3D offset surface/solid (inflate or deflate a shape)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object to offset"
+        },
+        "distance": {
+          "type": "number",
+          "description": "Offset distance in mm (positive = outward, negative = inward)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the offset object"
+        }
+      },
+      "required": [
+        "objectName",
+        "distance"
+      ]
+    }
+  },
+  "freecad_section": {
+    "description": "Create a cross-section of an object with a plane",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object to section"
+        },
+        "plane": {
+          "type": "string",
+          "enum": [
+            "XY",
+            "XZ",
+            "YZ"
+          ],
+          "description": "Section plane (default: XY)"
+        },
+        "offset": {
+          "type": "number",
+          "description": "Offset of the section plane from origin in mm (default 0)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the section object"
+        }
+      },
+      "required": [
+        "objectName"
+      ]
+    }
+  },
+  "freecad_compound": {
+    "description": "Create a compound (group) from multiple objects without fusing them",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of objects to include in the compound"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the compound"
+        }
+      },
+      "required": [
+        "objectNames"
+      ]
+    }
+  },
+  "freecad_linear_array": {
+    "description": "Create a linear array (copies of an object spaced along a direction)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object to array"
+        },
+        "directionX": {
+          "type": "number",
+          "description": "X component of spacing direction"
+        },
+        "directionY": {
+          "type": "number",
+          "description": "Y component of spacing direction"
+        },
+        "directionZ": {
+          "type": "number",
+          "description": "Z component of spacing direction"
+        },
+        "count": {
+          "type": "number",
+          "description": "Number of copies (including original)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the array"
+        }
+      },
+      "required": [
+        "objectName",
+        "directionX",
+        "directionY",
+        "directionZ",
+        "count"
+      ]
+    }
+  },
+  "freecad_polar_array": {
+    "description": "Create a polar (circular) array of copies around an axis",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object to array"
+        },
+        "count": {
+          "type": "number",
+          "description": "Number of copies (including original)"
+        },
+        "angle": {
+          "type": "number",
+          "description": "Total angle to span in degrees (default 360)"
+        },
+        "axisX": {
+          "type": "number",
+          "description": "X component of rotation axis (default 0)"
+        },
+        "axisY": {
+          "type": "number",
+          "description": "Y component of rotation axis (default 0)"
+        },
+        "axisZ": {
+          "type": "number",
+          "description": "Z component of rotation axis (default 1)"
+        },
+        "centerX": {
+          "type": "number",
+          "description": "X of rotation center (default 0)"
+        },
+        "centerY": {
+          "type": "number",
+          "description": "Y of rotation center (default 0)"
+        },
+        "centerZ": {
+          "type": "number",
+          "description": "Z of rotation center (default 0)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the array"
+        }
+      },
+      "required": [
+        "objectName",
+        "count"
+      ]
+    }
+  },
+  "freecad_scale_object": {
+    "description": "Scale an object uniformly or non-uniformly",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object to scale"
+        },
+        "scaleX": {
+          "type": "number",
+          "description": "Scale factor in X (default 1.0)"
+        },
+        "scaleY": {
+          "type": "number",
+          "description": "Scale factor in Y (default same as scaleX)"
+        },
+        "scaleZ": {
+          "type": "number",
+          "description": "Scale factor in Z (default same as scaleX)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the scaled object"
+        }
+      },
+      "required": [
+        "objectName",
+        "scaleX"
+      ]
+    }
+  },
+  "freecad_extrude": {
+    "description": "Extrude a 2D wire/face along a direction to create a 3D solid (Part Extrude, not PartDesign Pad)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the 2D shape/wire to extrude"
+        },
+        "dirX": {
+          "type": "number",
+          "description": "X component of extrusion direction (default 0)"
+        },
+        "dirY": {
+          "type": "number",
+          "description": "Y component of extrusion direction (default 0)"
+        },
+        "dirZ": {
+          "type": "number",
+          "description": "Z component of extrusion direction (default 10)"
+        },
+        "solid": {
+          "type": "boolean",
+          "description": "Create a solid (default true)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the extruded object"
+        }
+      },
+      "required": [
+        "objectName"
+      ]
+    }
+  },
+  "freecad_get_center_of_mass": {
+    "description": "Get the center of mass and inertia properties of an object",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object"
+        }
+      },
+      "required": [
+        "objectName"
+      ]
+    }
+  },
+  "freecad_get_face_info": {
+    "description": "Get information about faces of an object (type, area, normal, center)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object"
+        },
+        "faceIndex": {
+          "type": "number",
+          "description": "Specific face index (1-based). If omitted, returns info for all faces."
+        }
+      },
+      "required": [
+        "objectName"
+      ]
+    }
+  },
+  "freecad_get_edge_info": {
+    "description": "Get information about edges of an object (type, length, start/end points)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object"
+        },
+        "edgeIndex": {
+          "type": "number",
+          "description": "Specific edge index (1-based). If omitted, returns info for all edges."
+        }
+      },
+      "required": [
+        "objectName"
+      ]
+    }
+  },
+  "freecad_spreadsheet_create": {
+    "description": "Create a new spreadsheet for parametric design control. Cell values can be linked to object properties via expressions.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name for the spreadsheet (default: \"Spreadsheet\")"
+        }
+      },
+      "required": []
+    }
+  },
+  "freecad_spreadsheet_set": {
+    "description": "Set one or more cell values in a spreadsheet. Supports numbers, strings, and formulas (prefix with =).",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sheetName": {
+          "type": "string",
+          "description": "Name of the spreadsheet"
+        },
+        "cells": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "cell": {
+                "type": "string",
+                "description": "Cell address (e.g., \"A1\", \"B3\")"
+              },
+              "value": {
+                "type": "string",
+                "description": "Cell value — number, string, or formula starting with ="
+              }
+            },
+            "required": [
+              "cell",
+              "value"
+            ]
+          },
+          "description": "Array of cell-value pairs to set"
+        }
+      },
+      "required": [
+        "sheetName",
+        "cells"
+      ]
+    }
+  },
+  "freecad_spreadsheet_get": {
+    "description": "Read cell values from a spreadsheet",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sheetName": {
+          "type": "string",
+          "description": "Name of the spreadsheet"
+        },
+        "cells": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Cell addresses to read (e.g., [\"A1\", \"B2\", \"C3\"])"
+        }
+      },
+      "required": [
+        "sheetName",
+        "cells"
+      ]
+    }
+  },
+  "freecad_spreadsheet_alias": {
+    "description": "Set an alias for a cell to use it as a named parameter in expressions (e.g., \"Width\" for cell A1)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sheetName": {
+          "type": "string",
+          "description": "Name of the spreadsheet"
+        },
+        "cell": {
+          "type": "string",
+          "description": "Cell address (e.g., \"A1\")"
+        },
+        "alias": {
+          "type": "string",
+          "description": "Alias name (e.g., \"Width\", \"Height\")"
+        }
+      },
+      "required": [
+        "sheetName",
+        "cell",
+        "alias"
+      ]
+    }
+  },
+  "freecad_set_expression": {
+    "description": "Bind an object property to a spreadsheet cell or expression for parametric control (e.g., Box.Length = Spreadsheet.Width)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the target object"
+        },
+        "property": {
+          "type": "string",
+          "description": "Property name (e.g., \"Length\", \"Height\", \"Radius\")"
+        },
+        "expression": {
+          "type": "string",
+          "description": "Expression string (e.g., \"Spreadsheet.Width\", \"Spreadsheet.Width * 2\")"
+        }
+      },
+      "required": [
+        "objectName",
+        "property",
+        "expression"
+      ]
+    }
+  },
+  "freecad_arch_wall": {
+    "description": "Create an architectural wall from a baseline or between two points",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "baselineName": {
+          "type": "string",
+          "description": "Name of a baseline object (Wire, Edge) to follow. If omitted, creates a straight wall from start to end points."
+        },
+        "startX": {
+          "type": "number",
+          "description": "Start X (if no baseline)"
+        },
+        "startY": {
+          "type": "number",
+          "description": "Start Y (if no baseline)"
+        },
+        "endX": {
+          "type": "number",
+          "description": "End X (if no baseline)"
+        },
+        "endY": {
+          "type": "number",
+          "description": "End Y (if no baseline)"
+        },
+        "length": {
+          "type": "number",
+          "description": "Wall length in mm (if no baseline/points, default 1000)"
+        },
+        "width": {
+          "type": "number",
+          "description": "Wall thickness in mm (default 200)"
+        },
+        "height": {
+          "type": "number",
+          "description": "Wall height in mm (default 3000)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the wall"
+        }
+      },
+      "required": []
+    }
+  },
+  "freecad_arch_structure": {
+    "description": "Create a structural element (column, beam, slab)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "structureType": {
+          "type": "string",
+          "enum": [
+            "column",
+            "beam",
+            "slab"
+          ],
+          "description": "Type of structure (default: column)"
+        },
+        "length": {
+          "type": "number",
+          "description": "Length in mm (default 500)"
+        },
+        "width": {
+          "type": "number",
+          "description": "Width in mm (default 500)"
+        },
+        "height": {
+          "type": "number",
+          "description": "Height in mm (default 3000 for column, 500 for beam/slab)"
+        },
+        "x": {
+          "type": "number",
+          "description": "X position (default 0)"
+        },
+        "y": {
+          "type": "number",
+          "description": "Y position (default 0)"
+        },
+        "z": {
+          "type": "number",
+          "description": "Z position (default 0)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the structure"
+        }
+      },
+      "required": []
+    }
+  },
+  "freecad_arch_window": {
+    "description": "Create a window or door opening in a wall",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "wallName": {
+          "type": "string",
+          "description": "Name of the host wall"
+        },
+        "windowWidth": {
+          "type": "number",
+          "description": "Window width in mm (default 1000)"
+        },
+        "windowHeight": {
+          "type": "number",
+          "description": "Window height in mm (default 1200)"
+        },
+        "sillHeight": {
+          "type": "number",
+          "description": "Sill height from floor in mm (default 900)"
+        },
+        "x": {
+          "type": "number",
+          "description": "X offset along wall (default 500)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the window"
+        }
+      },
+      "required": [
+        "wallName"
+      ]
+    }
+  },
+  "freecad_arch_floor": {
+    "description": "Create a building floor/level to organize BIM objects",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "height": {
+          "type": "number",
+          "description": "Floor-to-floor height in mm (default 3000)"
+        },
+        "objectNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of objects to include in this floor"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the floor (default: \"Level\")"
+        }
+      },
+      "required": []
+    }
+  },
+  "freecad_arch_building": {
+    "description": "Create a building container for organizing floors/levels",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "floorNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of Floor/Level objects to include"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the building"
+        }
+      },
+      "required": []
+    }
+  },
+  "freecad_arch_site": {
+    "description": "Create a site container (top-level BIM container for buildings)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "buildingNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of Building objects to include"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the site"
+        }
+      },
+      "required": []
+    }
+  },
+  "freecad_arch_roof": {
+    "description": "Create a roof from a wire/edges or on top of a wall",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "baseName": {
+          "type": "string",
+          "description": "Name of base object (wire or wall)"
+        },
+        "angle": {
+          "type": "number",
+          "description": "Roof angle in degrees (default 45)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the roof"
+        }
+      },
+      "required": [
+        "baseName"
+      ]
+    }
+  },
+  "freecad_arch_stairs": {
+    "description": "Create a staircase",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "numberOfSteps": {
+          "type": "number",
+          "description": "Number of steps (default 10)"
+        },
+        "totalHeight": {
+          "type": "number",
+          "description": "Total height in mm (default 3000)"
+        },
+        "width": {
+          "type": "number",
+          "description": "Stair width in mm (default 1000)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the stairs"
+        }
+      },
+      "required": []
+    }
+  },
+  "freecad_export_ifc": {
+    "description": "Export BIM model to IFC format (Industry Foundation Classes)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "filePath": {
+          "type": "string",
+          "description": "Absolute path for the output IFC file"
+        },
+        "objectNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of objects to export (if omitted, exports all)"
+        }
+      },
+      "required": [
+        "filePath"
+      ]
+    }
+  },
+  "freecad_fem_analysis": {
+    "description": "Create a FEM analysis container for finite element simulation",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name for the analysis (default: \"Analysis\")"
+        }
+      },
+      "required": []
+    }
+  },
+  "freecad_fem_material": {
+    "description": "Add a material definition to the FEM analysis (e.g., steel, aluminum, etc.)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "analysisName": {
+          "type": "string",
+          "description": "Name of the FEM analysis"
+        },
+        "materialName": {
+          "type": "string",
+          "description": "Material type — \"Steel\", \"Aluminum\", \"Concrete\", or \"Custom\""
+        },
+        "youngsModulus": {
+          "type": "number",
+          "description": "Young's modulus in MPa (for Custom material)"
+        },
+        "poissonRatio": {
+          "type": "number",
+          "description": "Poisson's ratio (for Custom material, default 0.3)"
+        },
+        "density": {
+          "type": "number",
+          "description": "Density in kg/m³ (for Custom material)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the material object"
+        }
+      },
+      "required": [
+        "analysisName"
+      ]
+    }
+  },
+  "freecad_fem_constraint_fixed": {
+    "description": "Add a fixed boundary condition (fixed support) to faces/edges of the model",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "analysisName": {
+          "type": "string",
+          "description": "Name of the FEM analysis"
+        },
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object"
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Face/edge references to fix (e.g., [\"Face1\", \"Face2\"])"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the constraint"
+        }
+      },
+      "required": [
+        "analysisName",
+        "objectName",
+        "references"
+      ]
+    }
+  },
+  "freecad_fem_constraint_force": {
+    "description": "Apply a force load to faces/edges of the model",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "analysisName": {
+          "type": "string",
+          "description": "Name of the FEM analysis"
+        },
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object"
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Face/edge references to apply force to (e.g., [\"Face3\"])"
+        },
+        "force": {
+          "type": "number",
+          "description": "Force magnitude in N"
+        },
+        "directionX": {
+          "type": "number",
+          "description": "X component of force direction (default 0)"
+        },
+        "directionY": {
+          "type": "number",
+          "description": "Y component of force direction (default 0)"
+        },
+        "directionZ": {
+          "type": "number",
+          "description": "Z component of force direction (default -1, i.e., downward)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the force constraint"
+        }
+      },
+      "required": [
+        "analysisName",
+        "objectName",
+        "references",
+        "force"
+      ]
+    }
+  },
+  "freecad_fem_constraint_pressure": {
+    "description": "Apply a pressure load to faces of the model",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "analysisName": {
+          "type": "string",
+          "description": "Name of the FEM analysis"
+        },
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object"
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Face references to apply pressure to (e.g., [\"Face1\"])"
+        },
+        "pressure": {
+          "type": "number",
+          "description": "Pressure in MPa"
+        },
+        "reversed": {
+          "type": "boolean",
+          "description": "Reverse direction (default false)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the pressure constraint"
+        }
+      },
+      "required": [
+        "analysisName",
+        "objectName",
+        "references",
+        "pressure"
+      ]
+    }
+  },
+  "freecad_fem_mesh": {
+    "description": "Generate a tetrahedral FEM mesh for an object using Gmsh or Netgen",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "analysisName": {
+          "type": "string",
+          "description": "Name of the FEM analysis"
+        },
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object to mesh"
+        },
+        "maxElementSize": {
+          "type": "number",
+          "description": "Maximum element size in mm (default 0 = auto)"
+        },
+        "minElementSize": {
+          "type": "number",
+          "description": "Minimum element size in mm (default 0 = auto)"
+        },
+        "meshOrder": {
+          "type": "number",
+          "description": "Element order: 1 (linear) or 2 (quadratic, default)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the mesh object"
+        }
+      },
+      "required": [
+        "analysisName",
+        "objectName"
+      ]
+    }
+  },
+  "freecad_fem_solver": {
+    "description": "Add a FEM solver (CalculiX or Elmer) and optionally run the analysis",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "analysisName": {
+          "type": "string",
+          "description": "Name of the FEM analysis"
+        },
+        "solver": {
+          "type": "string",
+          "enum": [
+            "calculix",
+            "elmer"
+          ],
+          "description": "Solver type (default: calculix)"
+        },
+        "analysisType": {
+          "type": "string",
+          "enum": [
+            "static",
+            "frequency",
+            "thermomech",
+            "buckling"
+          ],
+          "description": "Type of analysis (default: static)"
+        },
+        "run": {
+          "type": "boolean",
+          "description": "Run the solver immediately (default false)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the solver object"
+        }
+      },
+      "required": [
+        "analysisName"
+      ]
+    }
+  },
+  "freecad_fem_results": {
+    "description": "Read FEM analysis results (displacement, stress, strain) after solving",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "analysisName": {
+          "type": "string",
+          "description": "Name of the FEM analysis"
+        }
+      },
+      "required": [
+        "analysisName"
+      ]
+    }
+  },
+  "freecad_surface_filling": {
+    "description": "Create a surface by filling boundary edges (Gordon surface). Fills an enclosed boundary of edges with a smooth surface.",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object containing boundary edges"
+        },
+        "edgeNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Edge names forming the boundary (e.g., [\"Edge1\", \"Edge2\", \"Edge3\", \"Edge4\"])"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the surface"
+        }
+      },
+      "required": [
+        "objectName",
+        "edgeNames"
+      ]
+    }
+  },
+  "freecad_surface_geomfill": {
+    "description": "Create a surface from 2 to 4 boundary edges (Coons patch / Gordon surface)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "objectName": {
+                "type": "string"
+              },
+              "edgeName": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "objectName",
+              "edgeName"
+            ]
+          },
+          "description": "Array of 2-4 edge references [{objectName, edgeName}]"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the surface"
+        }
+      },
+      "required": [
+        "edges"
+      ]
+    }
+  },
+  "freecad_surface_sections": {
+    "description": "Create a surface through cross-section curves (loft-like surface through profiles)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "sectionNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of wire/edge objects to use as cross-sections"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the surface"
+        }
+      },
+      "required": [
+        "sectionNames"
+      ]
+    }
+  },
+  "freecad_surface_extend": {
+    "description": "Extend a surface face beyond its boundary in U and/or V direction",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object containing the face"
+        },
+        "faceName": {
+          "type": "string",
+          "description": "Face to extend (e.g., \"Face1\")"
+        },
+        "extensionLength": {
+          "type": "number",
+          "description": "Extension length in mm (default 10)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the extended surface"
+        }
+      },
+      "required": [
+        "objectName",
+        "faceName"
+      ]
+    }
+  },
+  "freecad_surface_ruled": {
+    "description": "Create a ruled surface between two edges/wires (straight lines connecting corresponding points)",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "edge1ObjectName": {
+          "type": "string",
+          "description": "Object name containing the first edge/wire"
+        },
+        "edge1Name": {
+          "type": "string",
+          "description": "First edge reference (e.g., \"Edge1\")"
+        },
+        "edge2ObjectName": {
+          "type": "string",
+          "description": "Object name containing the second edge/wire"
+        },
+        "edge2Name": {
+          "type": "string",
+          "description": "Second edge reference (e.g., \"Edge1\")"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the ruled surface"
+        }
+      },
+      "required": [
+        "edge1ObjectName",
+        "edge1Name",
+        "edge2ObjectName",
+        "edge2Name"
+      ]
+    }
+  },
+  "freecad_assembly_create": {
+    "description": "Create a new Assembly container for assembling parts with joints/constraints",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name for the assembly (default: \"Assembly\")"
+        }
+      },
+      "required": []
+    }
+  },
+  "freecad_assembly_insert_component": {
+    "description": "Insert a part or body into an assembly as a component",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "assemblyName": {
+          "type": "string",
+          "description": "Name of the assembly"
+        },
+        "objectName": {
+          "type": "string",
+          "description": "Name of the object to insert"
+        },
+        "x": {
+          "type": "number",
+          "description": "X placement offset (default 0)"
+        },
+        "y": {
+          "type": "number",
+          "description": "Y placement offset (default 0)"
+        },
+        "z": {
+          "type": "number",
+          "description": "Z placement offset (default 0)"
+        }
+      },
+      "required": [
+        "assemblyName",
+        "objectName"
+      ]
+    }
+  },
+  "freecad_assembly_toggle_grounded": {
+    "description": "Toggle whether a component is grounded (fixed in space) in the assembly",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "assemblyName": {
+          "type": "string",
+          "description": "Name of the assembly"
+        },
+        "componentName": {
+          "type": "string",
+          "description": "Name of the component to ground/unground"
+        }
+      },
+      "required": [
+        "assemblyName",
+        "componentName"
+      ]
+    }
+  },
+  "freecad_assembly_fixed_joint": {
+    "description": "Create a fixed joint locking two components rigidly together",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "assemblyName": {
+          "type": "string",
+          "description": "Name of the assembly"
+        },
+        "component1": {
+          "type": "string",
+          "description": "Name of the first component"
+        },
+        "element1": {
+          "type": "string",
+          "description": "Element reference on component1 (e.g., \"Face1\")"
+        },
+        "component2": {
+          "type": "string",
+          "description": "Name of the second component"
+        },
+        "element2": {
+          "type": "string",
+          "description": "Element reference on component2 (e.g., \"Face1\")"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the joint"
+        }
+      },
+      "required": [
+        "assemblyName",
+        "component1",
+        "element1",
+        "component2",
+        "element2"
+      ]
+    }
+  },
+  "freecad_assembly_revolute_joint": {
+    "description": "Create a revolute (hinge) joint between two components — allows rotation around one axis",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "assemblyName": {
+          "type": "string",
+          "description": "Name of the assembly"
+        },
+        "component1": {
+          "type": "string",
+          "description": "Name of the first component"
+        },
+        "element1": {
+          "type": "string",
+          "description": "Cylindrical face or edge on component1"
+        },
+        "component2": {
+          "type": "string",
+          "description": "Name of the second component"
+        },
+        "element2": {
+          "type": "string",
+          "description": "Cylindrical face or edge on component2"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the joint"
+        }
+      },
+      "required": [
+        "assemblyName",
+        "component1",
+        "element1",
+        "component2",
+        "element2"
+      ]
+    }
+  },
+  "freecad_assembly_slider_joint": {
+    "description": "Create a slider (prismatic) joint — allows linear translation along one axis",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "assemblyName": {
+          "type": "string",
+          "description": "Name of the assembly"
+        },
+        "component1": {
+          "type": "string",
+          "description": "Name of the first component"
+        },
+        "element1": {
+          "type": "string",
+          "description": "Face or edge on component1"
+        },
+        "component2": {
+          "type": "string",
+          "description": "Name of the second component"
+        },
+        "element2": {
+          "type": "string",
+          "description": "Face or edge on component2"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the joint"
+        }
+      },
+      "required": [
+        "assemblyName",
+        "component1",
+        "element1",
+        "component2",
+        "element2"
+      ]
+    }
+  },
+  "freecad_assembly_cylindrical_joint": {
+    "description": "Create a cylindrical joint — allows rotation and translation along the same axis",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "assemblyName": {
+          "type": "string",
+          "description": "Name of the assembly"
+        },
+        "component1": {
+          "type": "string",
+          "description": "Name of the first component"
+        },
+        "element1": {
+          "type": "string",
+          "description": "Cylindrical face on component1"
+        },
+        "component2": {
+          "type": "string",
+          "description": "Name of the second component"
+        },
+        "element2": {
+          "type": "string",
+          "description": "Cylindrical face on component2"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the joint"
+        }
+      },
+      "required": [
+        "assemblyName",
+        "component1",
+        "element1",
+        "component2",
+        "element2"
+      ]
+    }
+  },
+  "freecad_assembly_ball_joint": {
+    "description": "Create a ball (spherical) joint — allows rotation in all 3 axes",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "assemblyName": {
+          "type": "string",
+          "description": "Name of the assembly"
+        },
+        "component1": {
+          "type": "string",
+          "description": "Name of the first component"
+        },
+        "element1": {
+          "type": "string",
+          "description": "Spherical face or vertex on component1"
+        },
+        "component2": {
+          "type": "string",
+          "description": "Name of the second component"
+        },
+        "element2": {
+          "type": "string",
+          "description": "Spherical face or vertex on component2"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the joint"
+        }
+      },
+      "required": [
+        "assemblyName",
+        "component1",
+        "element1",
+        "component2",
+        "element2"
+      ]
+    }
+  },
+  "freecad_assembly_distance_joint": {
+    "description": "Create a distance constraint between two components",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "assemblyName": {
+          "type": "string",
+          "description": "Name of the assembly"
+        },
+        "component1": {
+          "type": "string",
+          "description": "Name of the first component"
+        },
+        "element1": {
+          "type": "string",
+          "description": "Element on component1"
+        },
+        "component2": {
+          "type": "string",
+          "description": "Name of the second component"
+        },
+        "element2": {
+          "type": "string",
+          "description": "Element on component2"
+        },
+        "distance": {
+          "type": "number",
+          "description": "Distance value in mm"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name for the joint"
+        }
+      },
+      "required": [
+        "assemblyName",
+        "component1",
+        "element1",
+        "component2",
+        "element2",
+        "distance"
+      ]
+    }
+  },
+  "freecad_assembly_solve": {
+    "description": "Solve the assembly constraints to compute final positions of all components",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "assemblyName": {
+          "type": "string",
+          "description": "Name of the assembly to solve"
+        }
+      },
+      "required": [
+        "assemblyName"
+      ]
+    }
+  }
+}
